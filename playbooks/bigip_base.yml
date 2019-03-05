@@ -1,6 +1,6 @@
 ---
 - name: Onboarding BIG-IP
-  hosts: bigip
+  hosts: 10.1.10.11
   gather_facts: false
 
   tasks:
