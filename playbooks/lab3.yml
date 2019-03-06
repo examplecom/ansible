@@ -1,0 +1,27 @@
+---
+
+- name: Create nodes using bigip_node module and with_items
+  hosts: 10.1.10.11
+  connection: local
+  gather_facts: no
+
+  vars:
+    servers:
+      - { name: Server1, address: "10.10.10.100" }
+      - { name: Server2, address: "10.10.10.101" }
+
+  vars_files:
+    - "password.yml"
+
+  tasks:
+     - name: Create nodes using with_items
+       bigip_node:
+          user: "{{ userName }}"
+          password: "{{ password }}"
+          server: "{{ inventory_hostname }}"
+          validate_certs: no
+          name: "{{ item.name }}"
+          address: "{{ item.address }}"
+       delegate_to: localhost
+       with_items: "{{ servers }}"
+

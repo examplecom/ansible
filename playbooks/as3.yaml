@@ -1,0 +1,31 @@
+---
+- name: AS3
+  hosts: 10.1.10.11
+  connection: local
+  gather_facts: false
+
+  vars:
+    pool_members: "{{ groups['webservers'] }}"
+
+  vars_files:
+    - "password.yml"
+
+  tasks:
+
+  - name: CREATE AS3 JSON BODY
+    set_fact:
+      as3_app_body: "{{ lookup('template', 'as3_sample.j2', split_lines=False) }}"
+
+  - name: PUSH AS3
+    uri:
+      url: "https://10.1.10.11:443/mgmt/shared/appsvcs/declare"
+      method: POST
+      body: "{{ lookup('template','tenant_base.j2', split_lines=False) }}"
+      status_code: 200
+      timeout: 300
+      body_format: json
+      force_basic_auth: yes
+      user: "{{ userName }}"
+      password: "{{ password }}"
+      validate_certs: no
+    delegate_to: localhost

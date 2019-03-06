@@ -7,7 +7,6 @@
       server: 10.1.10.11
       user: admin
       validate_certs: no
-      state: absent
   delegate_to: localhost
 
 ...

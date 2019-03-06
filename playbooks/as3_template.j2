@@ -1,0 +1,26 @@
+"web_app": {
+    "class": "Application",
+    "template": "http",
+    "serviceMain": {
+        "class": "Service_HTTP",
+        "virtualAddresses": [
+            "5.5.5.5"
+        ],
+        "pool": "app_pool"
+    },
+    "app_pool": {
+        "class": "Pool",
+        "monitors": [
+            "http"
+        ],
+        "members": [
+            {
+                "servicePort": 443,
+                "serverAddresses": [
+                    - { name: Server1, address: "10.10.10.100" }
+                    - { name: Server2, address: "10.10.10.101" }
+                ]
+            }
+        ]
+    }
+}
