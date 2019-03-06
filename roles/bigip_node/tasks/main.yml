@@ -1,5 +1,5 @@
 ---
-- name: Create node1
+- name: node-1
   bigip_node:
       name: node-1
       password: admin

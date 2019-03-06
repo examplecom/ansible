@@ -1,11 +1,11 @@
 ---
-- name: Onboarding Node
+- name: Managing LTM
   hosts: 10.1.10.11
   gather_facts: false
 
   tasks:
 
-  - name: Create a node
+  - name: Node Modification
     include_role:
       name: bigip_node
 
