@@ -1,0 +1,12 @@
+---
+- name: Create node1
+  bigip_node:
+      name: node-1
+      password: admin
+      address: 10.10.10.10
+      server: 10.1.10.11
+      user: admin
+      validate_certs: no
+  delegate_to: localhost
+
+...

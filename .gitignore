@@ -2,3 +2,6 @@
 ansible.log
 .gitconfig
 .ansible
+*.swp
+*.swo
+*~
